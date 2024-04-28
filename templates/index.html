@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .ubuntu-medium {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    /* Adjust the width and height of the range input */
+    input[type="range"] {
+      width: calc(100% - 20px); /* Adjust width to fit within the div */
+      height: 40px; /* Increase the height */
+      margin-bottom: 10px;
+    }
+
+    /* Style for the min and max value text */
+    .range-values {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Position the age number to the right of the slider */
+    .age-slider-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .age-label {
+      margin-right: 10px; /* Adjust margin as needed */
+    }
+
+    .age-number {
+      font-size: 14px; /* Adjust font size as needed */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1 class="ubuntu-medium">Diabetes Predictor</h1>
+
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="Glucose Level" placeholder="Glucose Level (mmol/L)" required="required" />
+      <input type="text" name="Insulin" placeholder="Insulin (mu U/ml)" required="required" />
+      <input type="text" name="BMI" placeholder="BMI" required="required" />
+      <div class="age-slider-container">
+        <label for="age" class="age-label">Age:</label>
+        <span class="age-number" id="age-value">30</span>
+      </div>
+      <input type="range" id="age" name="Age" min="0" max="100" step="1" value="30" oninput="updateAgeValue(this.value)">
+      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
+      <input type="text" name="Blood Pressure" placeholder="Blood Pressure (mm Hg)" required="required" />
+      <input type="text" name="Skin Thickness" placeholder="Skin Thickness (mm)" required="required" />
+      <input type="text" name="Diabetes Pedigree Function" placeholder="Diabetes Pedigree Function" required="required" />
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+    <script>
+      // Function to update age value display dynamically
+      function updateAgeValue(value) {
+        document.getElementById('age-value').textContent = value;
+      }
+    </script>
+  </div>
+</body>
+</html>
