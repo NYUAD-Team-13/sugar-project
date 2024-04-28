@@ -14,7 +14,6 @@ def get_risk_level(probability):
     else:
         return "extremely high"
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -23,8 +22,7 @@ def home():
 def predict():
     probability = 10
     risk_level = get_risk_level(probability)
-    return render_template('predict.html', risk_level=risk_level)
-
+    return render_template('predict.html', risk_level=risk_level, probability=probability)
 
 if __name__ == "__main__":
     app.run(debug=True)
