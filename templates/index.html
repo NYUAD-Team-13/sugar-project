@@ -46,21 +46,45 @@
 
 <body>
   <div class="login">
-    <h1 class="ubuntu-medium">Diabetes Predictor</h1>
-
+    <div class="heading">
+      <h1 class="ubuntu-medium">DiabetiQ</h1>
+      <img src="{{ url_for('static', filename='logo.png') }}">
+    </div>
+    
+    <hr class="line">
+  
     <form action="{{ url_for('predict')}}" method="post">
-      <input type="text" name="Glucose Level" placeholder="Glucose Level (mmol/L)" required="required" />
-      <input type="text" name="Insulin" placeholder="Insulin (mu U/ml)" required="required" />
-      <input type="text" name="BMI" placeholder="BMI" required="required" />
+
+      <!-- Add titles for each input -->
+      <label for="glucose">Glucose Level:</label>
+      <input type="text" name="Glucose Level" id="glucose" placeholder="Glucose Level (mmol/L)" required="required" />
+      
+      <label for="insulin">Insulin:</label>
+      <input type="text" name="Insulin" id="insulin" placeholder="Insulin (mu U/ml)" required="required" />
+      
+      <label for="bmi">BMI:</label>
+      <input type="text" name="BMI" id="bmi" placeholder="BMI" required="required" />
+      
       <div class="age-slider-container">
         <label for="age" class="age-label">Age:</label>
         <span class="age-number" id="age-value">30</span>
       </div>
       <input type="range" id="age" name="Age" min="0" max="100" step="1" value="30" oninput="updateAgeValue(this.value)">
-      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
-      <input type="text" name="Blood Pressure" placeholder="Blood Pressure (mm Hg)" required="required" />
-      <input type="text" name="Skin Thickness" placeholder="Skin Thickness (mm)" required="required" />
-      <input type="text" name="Diabetes Pedigree Function" placeholder="Diabetes Pedigree Function" required="required" />
+      
+      <label for="pregnancies">Pregnancies:</label>
+      <input type="text" name="Pregnancies" id="pregnancies" placeholder="Pregnancies" required="required" />
+      
+      <label for="blood_pressure">Blood Pressure:</label>
+      <input type="text" name="Blood Pressure" id="blood_pressure" placeholder="Blood Pressure (mm Hg)" required="required" />
+      
+      <label for="skin_thickness">Skin Thickness:</label>
+      <input type="text" name="Skin Thickness" id="skin_thickness" placeholder="Skin Thickness (mm)" required="required" />
+      
+      <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label>
+      <input type="text" name="Diabetes Pedigree Function" id="diabetes_pedigree_function" placeholder="Diabetes Pedigree Function" required="required" />
+      
+      <br><br>
+      
       <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
