@@ -3,66 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Add these files to use ToxProgress -->
-    <link href="{{ url_for('static', filename='css/tox-progress.css') }}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="{{ url_for('static', filename='css/tox-progress.js') }}"></script>
-    <!-- -->
-
-    <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        header {
-            text-align: center;
-            background-color: pink; /* Changed the background color to pink */
-            padding: 20px; /* Added padding for better spacing */
-        }
-    </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('#reset-button').addEventListener('click', function () {
-                ToxProgress.create();
-                ToxProgress.animate();
-            });
-            ToxProgress.create();
-            ToxProgress.animate();
-        });
-    </script>
+    <title>Risk Assessment Result</title>
 </head>
 <body>
-
-<header class="text-center">
     <h1>Risk Assessment Result</h1>
-    <p>Your risk level is: {{ risk_level }}. Click here to set an automatic reminder to re-evaluate your risk.</p>
-</header>
-    
-<div class="container" style="padding: 10px 20px">
-    
-    <article>
-        {% if 0 <= probability < 25 %}
-        <div class="col-md-25 col-sm-50 ">
-            <div style="margin: auto" class="tox-progress" data-size="180" data-thickness="12" data-color="#bda148"
-                 data-background="#ffffff" data-progress="25" data-speed="500">
-                <div class="tox-progress-content" data-vcenter="true">
-                    <p class="text-center" style="font-family:'Josefin Sans', sans-serif; font-size: 2.0em; width: 100%">Extremely Low</p>
-                </div>
-                
-            </div>
-            <p style="font-family:'Josefin Sans', sans-serif;font-size: 1.4em;" class="text-center margin-top-xs">25%</p>
-        </div>
-        {% endif %}
-        <!-- Repeat similar structure for other risk levels -->
-        
-        <div class="col-100 text-center">
-            <button id="reset-button" class="button" style="padding: 5px 20px">Reset</button>
-        </div>
-    </article>
-    
-</div>
-
+    <p>Your risk level is: {{ risk_level }}</p>
+    <!-- Add visualization bar or any other content as needed -->
 </body>
 </html>

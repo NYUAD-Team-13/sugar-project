@@ -23,7 +23,7 @@ def home():
 def predict():
     probability = 10
     risk_level = get_risk_level(probability)
-    return render_template('predict.html', risk_level=risk_level, probability=probability)
+    return render_template('predict.html', risk_level=risk_level)
 
 
 if __name__ == "__main__":
